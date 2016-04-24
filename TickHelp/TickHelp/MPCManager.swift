@@ -31,14 +31,13 @@ class MPCManager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate, M
     var advertiser: MCNearbyServiceAdvertiser!
     var foundPeers = [MCPeerID]()
     var invitationHandler: ((Bool, MCSession) ->Void)!
-    
-    
+
     
     override init(){
         super.init()
         //Initialize variables
         peer = MCPeerID(displayName: UIDevice.currentDevice().name)
-   //     peer = MCPeerID(displayName: "szh")
+
         print("printing peer....... ")
         print(peer)
     
