@@ -1,3 +1,4 @@
+
 //
 //  offlineChatViewController.swift
 //  TickHelp
@@ -24,9 +25,9 @@ class offlineChatViewController: UIViewController, UITableViewDelegate, UITableV
         peers.delegate = self
         peers.dataSource = self
         
-        appDelagate.mpcManager!.delegate = self
-        appDelagate.mpcManager!.browser.startBrowsingForPeers()
-        appDelagate.mpcManager!.advertiser.startAdvertisingPeer()
+        appDelagate.mpcManager.delegate = self
+        appDelagate.mpcManager.browser.startBrowsingForPeers()
+        appDelagate.mpcManager.advertiser.startAdvertisingPeer()
         isAdvertising = true
         
         // Register cell classes
@@ -53,9 +54,9 @@ class offlineChatViewController: UIViewController, UITableViewDelegate, UITableV
         
         let visibilityAction: UIAlertAction = UIAlertAction(title: actionTitle, style: UIAlertActionStyle.Default) { (alertAction) -> Void in
             if self.isAdvertising == true {
-                self.appDelagate.mpcManager!.advertiser.stopAdvertisingPeer()
+                self.appDelagate.mpcManager.advertiser.stopAdvertisingPeer()
             }else {
-                self.appDelagate.mpcManager!.advertiser.startAdvertisingPeer()
+                self.appDelagate.mpcManager.advertiser.startAdvertisingPeer()
             }
             
             self.isAdvertising = !self.isAdvertising
@@ -83,13 +84,13 @@ class offlineChatViewController: UIViewController, UITableViewDelegate, UITableV
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return appDelagate.mpcManager!.foundPeers.count
+        return appDelagate.mpcManager.foundPeers.count
     }
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("idCellPeer")! as UITableViewCell
-        cell.textLabel?.text = appDelagate.mpcManager!.foundPeers[indexPath.row].displayName
+        cell.textLabel?.text = appDelagate.mpcManager.foundPeers[indexPath.row].displayName
         
         return cell
     }
@@ -100,9 +101,14 @@ class offlineChatViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+<<<<<<< HEAD
         let selectedPeer = appDelagate.mpcManager!.foundPeers[indexPath.row] as MCPeerID
+=======
+        let selectedPeer = appDelagate.mpcManager.foundPeers[indexPath.row] as MCPeerID
+        
+>>>>>>> master
         //TODO: This function is used to send peer info we are interested in
-        appDelagate.mpcManager!.browser.invitePeer(selectedPeer, toSession: appDelagate.mpcManager!.session, withContext: nil, timeout: 20)
+        appDelagate.mpcManager.browser.invitePeer(selectedPeer, toSession: appDelagate.mpcManager.session, withContext: nil, timeout: 20)
         
     }
     
@@ -122,12 +128,12 @@ class offlineChatViewController: UIViewController, UITableViewDelegate, UITableV
         
         let acceptAction: UIAlertAction = UIAlertAction(title: "Accept", style: UIAlertActionStyle.Default)  {(alertAction) -> Void in
             
-            self.appDelagate.mpcManager!.invitationHandler(true, self.appDelagate.mpcManager!.session)
+            self.appDelagate.mpcManager.invitationHandler(true, self.appDelagate.mpcManager.session)
             
         }
         
         let declineAction: UIAlertAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) {(alertAction) -> Void in
-            self.appDelagate.mpcManager!.invitationHandler!(false,self.appDelagate.mpcManager!.session)
+            self.appDelagate.mpcManager.invitationHandler!(false,self.appDelagate.mpcManager.session)
         }
         
         alert.addAction(acceptAction)
