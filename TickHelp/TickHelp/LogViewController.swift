@@ -16,11 +16,10 @@ class LogViewController: UIViewController {
     @IBOutlet weak var password: UITextField!
     var ref = Firebase(url: constant.userURL)
     let appDelagate = UIApplication.sharedApplication().delegate as! AppDelegate
-  //  var mpcManager: MPCManager!
+    
         
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setPlacehoder();
     }
     

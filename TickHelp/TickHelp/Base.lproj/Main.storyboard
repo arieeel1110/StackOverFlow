@@ -351,7 +351,7 @@
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q2s-HK-V7x">
-                                <rect key="frame" x="204" y="354" width="120" height="30"/>
+                                <rect key="frame" x="119" y="172" width="120" height="30"/>
                                 <state key="normal" title="Submit"/>
                                 <connections>
                                     <action selector="login:" destination="OD7-mR-r8z" eventType="touchUpInside" id="y79-E6-xZV"/>

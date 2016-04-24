@@ -21,9 +21,6 @@ class offlineChatViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        
         peers.delegate = self
         peers.dataSource = self
         
@@ -104,7 +101,6 @@ class offlineChatViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let selectedPeer = appDelagate.mpcManager!.foundPeers[indexPath.row] as MCPeerID
-        
         //TODO: This function is used to send peer info we are interested in
         appDelagate.mpcManager!.browser.invitePeer(selectedPeer, toSession: appDelagate.mpcManager!.session, withContext: nil, timeout: 20)
         
