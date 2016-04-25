@@ -15,13 +15,8 @@ class LogViewController: UIViewController {
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
     var ref = Firebase(url: constant.userURL)
-<<<<<<< HEAD
-    let appDelagate = UIApplication.sharedApplication().delegate as! AppDelegate
-    
-=======
     // get a reference to the appDelegate
     var mpcManager: MPCManager!
->>>>>>> master
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,11 +47,22 @@ class LogViewController: UIViewController {
                 // Authentication just completed successfully :)
                 // The logged in user's unique identifier
                 print(authData.uid)
-                
                 //let alert = UIAlertController(title: "", message: "Successfully login", preferredStyle: UIAlertControllerStyle.Alert)
                 //self.presentViewController(alert, animated: true, completion: nil)
                 // We are now logged in
+                constant.nickname = self.username.text!
                 constant.uid = authData.uid;
+                /*
+                let _ref_nickname = Firebase(url:constant.userURL + "/users/" + authData.uid)
+                _ref_nickname.observeEventType(.Value, withBlock: { snapshot in
+                    print(snapshot.value)
+                    //Get the data from the firebase
+                    constant.nickname = (snapshot.value.objectForKey("nickname") as? String)!
+                    }, withCancelBlock: { error in
+                        print(error.description)
+                })*/
+          //      print("Current user is:   ")
+            //    print(constant.nickname)
                 
                 let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
                 appDelegate.mpcManager = MPCManager();

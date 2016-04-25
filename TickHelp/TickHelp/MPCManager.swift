@@ -32,40 +32,31 @@ class MPCManager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate, M
     var advertiser: MCNearbyServiceAdvertiser!
     var foundPeers = [MCPeerID]()
     var invitationHandler: ((Bool, MCSession) ->Void)!
-
+    var _display_name = "";
+    
     
     override init(){
+        
         super.init()
-<<<<<<< HEAD
-        //Initialize variables
-        peer = MCPeerID(displayName: UIDevice.currentDevice().name)
-
-        print("printing peer....... ")
-        print(peer)
-    
-        //session = MCSession(peer: peer, securityIdentity: [myIdentity], encryptionPreference: MCEncryptionPreference.Required)
-=======
         let ref = Firebase(url:constant.userURL + "/users/" + constant.uid)
         print(ref)
-        var name_to_display = ""
+        
         ref.observeEventType(.Value, withBlock: { snapshot in
             print(snapshot.value)
             //Get the data from the firebase
-            constant.nickname = (snapshot.value.objectForKey("nickname") as? String)!
-                name_to_display = (snapshot.value.objectForKey("nickname") as? String)!
+                self._display_name = (snapshot.value.objectForKey("nickname") as? String)!
             }, withCancelBlock: { error in
                 print(error.description)
         })
         print("..display name is: ")
-        print(name_to_display)
         print(constant.nickname)
  
         var peer: MCPeerID!
-        peer = MCPeerID(displayName: constant.uid)
+        
+        peer = MCPeerID(displayName: constant.nickname)
 
         
       //  session = MCSession(peer: peer, securityIdentity: [myIdentity], encryptionPreference: MCEncryptionPreference.Required)
->>>>>>> master
         session = MCSession(peer: peer)
         session.delegate = self
         
